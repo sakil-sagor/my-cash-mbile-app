@@ -7,6 +7,7 @@ export async function loginApi(input: LoginInput): Promise<AuthResponseDto> {
   const response = await apiClient.post<ApiSuccessResponse<AuthResponseDto>>(
     endpoints.auth.login,
     input,
+    { _skipAuth: true },
   );
   return response.data.data;
 }
@@ -15,6 +16,16 @@ export async function registerApi(input: RegisterInput): Promise<AuthResponseDto
   const response = await apiClient.post<ApiSuccessResponse<AuthResponseDto>>(
     endpoints.auth.register,
     input,
+    { _skipAuth: true },
+  );
+  return response.data.data;
+}
+
+export async function googleLoginApi(idToken: string): Promise<AuthResponseDto> {
+  const response = await apiClient.post<ApiSuccessResponse<AuthResponseDto>>(
+    endpoints.auth.google,
+    { idToken },
+    { _skipAuth: true },
   );
   return response.data.data;
 }

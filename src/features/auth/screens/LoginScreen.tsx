@@ -2,6 +2,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { ScreenWrapper } from '@/components/ui/ScreenWrapper';
 import { AuthForm } from '../components/AuthForm';
+import { GoogleSignInButton } from '../components/GoogleSignInButton';
 import { useLogin } from '../hooks/useLogin';
 import { parseApiError } from '@/utils/error.util';
 import type { AuthStackParamList } from '@/navigation/types';
@@ -25,6 +26,8 @@ export function LoginScreen({ navigation }: Props) {
         }
         onSubmit={(values) => loginMutation.mutate(values)}
       />
+
+      <GoogleSignInButton />
 
       <Text style={styles.footer}>
         Don&apos;t have an account?{' '}

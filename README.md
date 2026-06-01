@@ -11,6 +11,7 @@ React Native mobile app built with Expo, TypeScript, and a feature-first archite
 - React Query (API mutations/queries)
 - Axios (HTTP client with interceptors)
 - expo-secure-store (token storage)
+- expo-auth-session (Google idToken flow)
 
 ## Project Structure
 
@@ -58,6 +59,18 @@ Set `EXPO_PUBLIC_API_URL` in `.env`:
 | iOS Simulator | `http://localhost:3000` |
 | Android Emulator | `http://10.0.2.2:3000` |
 | Physical device | `http://<your-local-ip>:3000` |
+
+### Google Sign-In
+
+Add OAuth client IDs to `.env` (from [Google Cloud Console](https://console.cloud.google.com/apis/credentials)):
+
+```
+EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID=your-web-client-id.apps.googleusercontent.com
+EXPO_PUBLIC_GOOGLE_IOS_CLIENT_ID=your-ios-client-id.apps.googleusercontent.com
+EXPO_PUBLIC_GOOGLE_ANDROID_CLIENT_ID=your-android-client-id.apps.googleusercontent.com
+```
+
+Set the same IDs (comma-separated) in backend `GOOGLE_CLIENT_IDS`. The app uses redirect scheme `mycash://` (see `app.config.ts`). For Android, register your app SHA-1 with the Android OAuth client.
 
 ## Architecture Highlights
 

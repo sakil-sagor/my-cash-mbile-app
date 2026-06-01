@@ -2,6 +2,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { ScreenWrapper } from '@/components/ui/ScreenWrapper';
 import { AuthForm } from '../components/AuthForm';
+import { GoogleSignInButton } from '../components/GoogleSignInButton';
 import { useRegister } from '../hooks/useRegister';
 import { parseApiError } from '@/utils/error.util';
 import type { AuthStackParamList } from '@/navigation/types';
@@ -31,6 +32,8 @@ export function RegisterScreen({ navigation }: Props) {
           })
         }
       />
+
+      <GoogleSignInButton />
 
       <Text style={styles.footer}>
         Already have an account?{' '}
